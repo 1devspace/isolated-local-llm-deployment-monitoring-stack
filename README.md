@@ -1,3 +1,10 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-orange?logo=prometheus)](https://prometheus.io)
+[![Grafana](https://img.shields.io/badge/Dashboard-Grafana-F46800?logo=grafana&logoColor=white)](https://grafana.com)
+[![Ollama](https://img.shields.io/badge/LLM-Ollama-4B0082?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzRiMDA4MiIvPjwvc3ZnPg==)](https://ollama.com)
+[![Docker](https://img.shields.io/badge/Containerized-Docker-blue?logo=docker)](https://www.docker.com)
+
+
 # 🧠 Isolated Local LLM Deployment & Monitoring Stack
 
 This repository provides a fully automated solution for deploying a **Large Language Model (LLM)** environment on a **local Mac server** using Docker, with strict network isolation and real-time monitoring.
