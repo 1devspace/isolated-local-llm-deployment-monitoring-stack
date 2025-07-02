@@ -1,0 +1,99 @@
+name: Deploy Monitoring Stack
+
+on:
+  workflow_dispatch:
+    inputs:
+      prometheus_port:
+        description: 'Prometheus host port'
+        required: false
+        default: '9090'
+      cadvisor_port:
+        description: 'cAdvisor host port'
+        required: false
+        default: '8082'
+      grafana_port:
+        description: 'Grafana host port'
+        required: false
+        default: '4001'
+      node_exporter_port:
+        description: 'Node Exporter host port'
+        required: false
+        default: '9100'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Docker network for monitoring
+        run: |
+          docker network inspect monitor-net >/dev/null 2>&1 || \
+          docker network create monitor-net
+
+      - name: Write prometheus.yml
+        run: |
+          cat > prometheus.yml <<EOF
+          global:
+            scrape_interval: 15s
+
+          scrape_configs:
+            - job_name: 'prometheus'
+              static_configs:
+                - targets: ['prometheus:9090']
+            - job_name: 'cadvisor'
+              static_configs:
+                - targets: ['cadvisor:8080']
+            - job_name: 'node'
+              static_configs:
+                - targets: ['node-exporter:9100']
+          EOF
+
+      - name: Run Prometheus container
+        run: |
+          docker rm -f prometheus || true
+          docker run -d \
+            --name prometheus \
+            --network monitor-net \
+            -p ${{ github.event.inputs.prometheus_port }}:9090 \
+            -v prometheus-data:/prometheus \
+            -v ${{ github.workspace }}/prometheus.yml:/etc/prometheus/prometheus.yml \
+            prom/prometheus
+
+      - name: Run cAdvisor container
+        run: |
+          docker rm -f cadvisor || true
+          docker run -d \
+            --name=cadvisor \
+            --network monitor-net \
+            --volume=/var/run/docker.sock:/var/run/docker.sock \
+            --volume=/var/lib/docker/:/var/lib/docker:ro \
+            --volume=/sys:/sys:ro \
+            --volume=/var/run:/var/run:ro \
+            -p ${{ github.event.inputs.cadvisor_port }}:8080 \
+            --detach=true \
+            gcr.io/cadvisor/cadvisor:latest
+
+      - name: Run Grafana container
+        run: |
+          docker rm -f grafana || true
+          docker run -d \
+            --name=grafana \
+            --network monitor-net \
+            -p ${{ github.event.inputs.grafana_port }}:3000 \
+            -v grafana-data:/var/lib/grafana \
+            grafana/grafana
+
+      - name: Run node-exporter container
+        run: |
+          docker rm -f node-exporter || true
+          docker run -d \
+            --name=node-exporter \
+            --network monitor-net \
+            -p ${{ github.event.inputs.node_exporter_port }}:9100 \
+            prom/node-exporter
+
+      - name: Print monitoring containers status
+        run: docker ps --filter "name=prometheus" --filter "name=cadvisor" --filter "name=grafana" --filter "name=node-exporter"
