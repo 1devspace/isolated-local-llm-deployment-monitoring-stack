@@ -6,11 +6,11 @@ on:
       ollama_port:
         description: 'Ollama host port'
         required: false
-        default: '11434'
+        default: '11444'
       webui_port:
         description: 'Open WebUI host port'
         required: false
-        default: '3000'
+        default: '3010'
 
 jobs:
   deploy:
