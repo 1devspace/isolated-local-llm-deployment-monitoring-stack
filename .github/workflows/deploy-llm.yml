@@ -31,7 +31,7 @@ jobs:
           docker run -d \
             --name ollama \
             --network ollama-net \
-            -p 127.0.0.1:${{ github.event.inputs.ollama_port }}:11434 \
+            -p 0.0.0.0:${{ github.event.inputs.ollama_port }}:11434 \
             -v ollama-data:/root/.ollama \
             ollama/ollama
 
@@ -45,7 +45,7 @@ jobs:
           docker run -d \
             --name open-webui \
             --network ollama-net \
-            -p 127.0.0.1:${{ github.event.inputs.webui_port }}:8080 \
+            -p 0.0.0.0:${{ github.event.inputs.webui_port }}:8080 \
             -e OLLAMA_API_BASE_URL=http://ollama:11434 \
             ghcr.io/open-webui/open-webui:main
 
