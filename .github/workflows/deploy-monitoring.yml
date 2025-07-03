@@ -30,8 +30,9 @@ jobs:
 
       - name: Create Docker network for monitoring
         run: |
-          docker network inspect monitor-net >/dev/null 2>&1 || \
-          docker network create monitor-net
+          if ! docker network inspect monitor-net >/dev/null 2>&1; then
+            docker network create monitor-net
+          fi
 
       - name: Write prometheus.yml
         run: |
@@ -59,28 +60,27 @@ jobs:
             --network monitor-net \
             -p ${{ github.event.inputs.prometheus_port }}:9090 \
             -v prometheus-data:/prometheus \
-            -v ${{ github.workspace }}/prometheus.yml:/etc/prometheus/prometheus.yml \
+            -v ${{ github.workspace }}/prometheus.yml:/etc/prometheus/prometheus.yml:ro \
             prom/prometheus
 
       - name: Run cAdvisor container
         run: |
           docker rm -f cadvisor || true
           docker run -d \
-            --name=cadvisor \
+            --name cadvisor \
             --network monitor-net \
-            --volume=/var/run/docker.sock:/var/run/docker.sock \
-            --volume=/var/lib/docker/:/var/lib/docker:ro \
-            --volume=/sys:/sys:ro \
-            --volume=/var/run:/var/run:ro \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v /var/lib/docker/:/var/lib/docker:ro \
+            -v /sys:/sys:ro \
+            -v /var/run:/var/run:ro \
             -p ${{ github.event.inputs.cadvisor_port }}:8080 \
-            --detach=true \
             gcr.io/cadvisor/cadvisor:latest
 
       - name: Run Grafana container
         run: |
           docker rm -f grafana || true
           docker run -d \
-            --name=grafana \
+            --name grafana \
             --network monitor-net \
             -p ${{ github.event.inputs.grafana_port }}:3000 \
             -v grafana-data:/var/lib/grafana \
@@ -90,10 +90,11 @@ jobs:
         run: |
           docker rm -f node-exporter || true
           docker run -d \
-            --name=node-exporter \
+            --name node-exporter \
             --network monitor-net \
             -p ${{ github.event.inputs.node_exporter_port }}:9100 \
             prom/node-exporter
 
       - name: Print monitoring containers status
-        run: docker ps --filter "name=prometheus" --filter "name=cadvisor" --filter "name=grafana" --filter "name=node-exporter"
+        run: |
+          docker ps --filter "name=prometheus" --filter "name=cadvisor" --filter "name=grafana" --filter "name=node-exporter"
