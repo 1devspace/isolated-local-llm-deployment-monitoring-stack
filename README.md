@@ -3,6 +3,8 @@
 [![Grafana](https://img.shields.io/badge/Dashboard-Grafana-F46800?logo=grafana&logoColor=white)](https://grafana.com)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-4B0082?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzRiMDA4MiIvPjwvc3ZnPg==)](https://ollama.com)
 [![Docker](https://img.shields.io/badge/Containerized-Docker-blue?logo=docker)](https://www.docker.com)
+[![Medium](https://img.shields.io/badge/Read%20on-Medium-black?logo=medium&style=for-the-badge)](https://medium.com/@mohamedaminehamdi/run-your-own-local-llm-with-full-monitoring-no-cloud-no-leaks-no-limits-b5b505da9220)
+
 
 
 # 🧠 Isolated Local LLM Deployment & Monitoring Stack
