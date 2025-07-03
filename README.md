@@ -194,10 +194,13 @@ docker run -d \
 ```txt
 .
 ├── prometheus.yml
+├── LICENCE
 ├── README.md
 └── .github
     └── workflows
-        └── deploy.yml  # (optional)
+        ├── deploy-llm.yml
+        ├── deploy-monitoring.yml
+        └── teardown-llm.yml
 ```
 
 ## 📄 License
