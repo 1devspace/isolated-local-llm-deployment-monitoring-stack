@@ -20,20 +20,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Ensure Docker permission (debug)
-        run: |
-          whoami
-          docker info || (echo "Docker not accessible. Ensure the runner user is in the 'docker' group." && exit 1)
-
       - name: Create Docker network for LLM
         run: |
-          sudo docker network inspect ollama-net >/dev/null 2>&1 || \
-          sudo docker network create ollama-net
+          docker network inspect ollama-net >/dev/null 2>&1 || \
+          docker network create ollama-net
 
       - name: Run Ollama container
         run: |
-          sudo docker rm -f ollama || true
-          sudo docker run -d \
+          docker rm -f ollama || true
+          docker run -d \
             --name ollama \
             --network ollama-net \
             -p 127.0.0.1:${{ github.event.inputs.ollama_port }}:11434 \
@@ -42,24 +37,21 @@ jobs:
 
       - name: Pull LLM model (e.g., llama3)
         run: |
-          sudo docker exec ollama ollama pull llama3
+          docker exec ollama ollama pull llama3
 
       - name: Run Open WebUI container
         run: |
-          sudo docker rm -f open-webui || true
-          sudo docker run -d \
+          docker rm -f open-webui || true
+          docker run -d \
             --name open-webui \
             --network ollama-net \
             -p 127.0.0.1:${{ github.event.inputs.webui_port }}:8080 \
             -e OLLAMA_API_BASE_URL=http://ollama:11434 \
-            -v open-webui:/app/backend/data \
-            --restart always \
             ghcr.io/open-webui/open-webui:main
 
       - name: Print container status
-        run: |
-          sudo docker ps --filter "name=ollama" --filter "name=open-webui"
+        run: docker ps --filter "name=ollama" --filter "name=open-webui"
 
       - name: Test Ollama API
         run: |
-          curl --fail http://localhost:${{ github.event.inputs.ollama_port }}/api/tags || echo "❌ Ollama not responding"
+          curl --fail http://localhost:${{ github.event.inputs.ollama_port }}/api/tags || echo "Ollama not responding"
