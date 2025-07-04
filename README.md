@@ -28,7 +28,7 @@ This repository provides a fully automated solution for deploying a **Large Lang
 
 ## 🚀 Getting Started
 
-### 1. Prerequisites
+### Prerequisites:
 
 Install Docker:
 
