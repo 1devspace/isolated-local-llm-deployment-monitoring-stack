@@ -5,8 +5,6 @@
 [![Docker](https://img.shields.io/badge/Containerized-Docker-blue?logo=docker)](https://www.docker.com)
 [![Medium](https://img.shields.io/badge/Blog-Medium-black?logo=medium)](https://medium.com/@mohamedaminehamdi/run-your-own-local-llm-with-full-monitoring-no-cloud-no-leaks-no-limits-b5b505da9220)
 
-
-
 # 🧠 Isolated Local LLM Deployment & Monitoring Stack
 
 This repository provides a fully automated solution for deploying a **Large Language Model (LLM)** environment on a **local Mac server** using Docker, with strict network isolation and real-time monitoring.
@@ -15,8 +13,8 @@ This repository provides a fully automated solution for deploying a **Large Lang
 
 ## ✨ Stack Components
 
-| Service       | Purpose                                |
-|---------------|----------------------------------------|
+| Service       | Purpose                                 |
+|---------------|-----------------------------------------|
 | **Ollama**     | Run LLMs locally (e.g., LLaMA 3)       |
 | **Open WebUI** | Chat interface for prompt-response     |
 | **Prometheus** | Time-series metrics collection         |
@@ -28,7 +26,7 @@ This repository provides a fully automated solution for deploying a **Large Lang
 
 ## 🚀 Getting Started
 
-### Prerequisites:
+### Prerequisites
 
 Install Docker:
 
@@ -45,7 +43,7 @@ open /Applications/Docker.app
 docker network create ollama-net
 ```
 
-###🔹 Run Ollama (Local LLM Backend)
+### 🔹 Run Ollama (Local LLM Backend)
 
 ```bash
 docker run -d \
@@ -62,13 +60,13 @@ docker run -d \
 - `-p 127.0.0.1:11444:11434`: Exposes the Ollama API **only to your local machine**, preventing external access.
 - `-v ollama-data:/root/.ollama`: Mounts a persistent Docker volume to store downloaded model files between container restarts.
 
-###🔹 Load a Model (e.g., LLaMA 3)
+### 🔹 Load a Model (e.g., LLaMA 3)
 
 ```bash
 docker exec -it ollama ollama pull llama3
 ```
 
-###🔹 Run Open WebUI (Frontend Chat Interface)
+### 🔹 Run Open WebUI (Frontend Chat Interface)
 
 ```bash
 docker run -d \
@@ -87,13 +85,13 @@ docker run -d \
 
 ## 📈 Step 2: Add Monitoring Stack
 
-###🔹 Create Monitoring Network
+### 🔹 Create Monitoring Network
 
 ```bash
 docker network create monitor-net
 ```
 
-###🔹 Prometheus Configuration
+### 🔹 Prometheus Configuration
 
 Create a file named prometheus.yml:
 
@@ -115,7 +113,7 @@ scrape_configs:
       - targets: ['node-exporter:9100']
 ```
 
-###🔹 Deploy Prometheus
+### 🔹 Deploy Prometheus
 
 ```bash
 docker run -d \
@@ -127,7 +125,7 @@ docker run -d \
   prom/prometheus
 ```
 
-###🔹 Deploy cAdvisor
+### 🔹 Deploy cAdvisor
 
 ```bash
 docker run -d \
@@ -143,7 +141,7 @@ docker run -d \
   gcr.io/cadvisor/cadvisor:latest
 ```
 
-###🔹 Deploy Node Exporter
+### 🔹 Deploy Node Exporter
 
 ```bash
 docker run -d \
@@ -153,7 +151,7 @@ docker run -d \
   prom/node-exporter
 ```
 
-###🔹 Deploy Grafana
+### 🔹 Deploy Grafana
 
 ```bash
 docker run -d \
@@ -171,7 +169,6 @@ docker run -d \
 `http://prometheus:9090`
 
 **Import Dashboard ID:** `1860` (Node Exporter Full)
-
 
 ## 🔒 Security & Isolation
 
@@ -221,4 +218,3 @@ This project makes use of the following open-source tools:
 - [**Grafana**](https://grafana.com) — Interactive dashboards and data visualization
 - [**cAdvisor**](https://github.com/google/cadvisor) — Container resource usage and performance analysis
 - [**Node Exporter**](https://github.com/prometheus/node_exporter) — Host-level system metrics exporter
-

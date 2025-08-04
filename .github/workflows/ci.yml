@@ -1,0 +1,54 @@
+name: CI Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    name: test for all vulnerabilities
+    runs-on: self-hosted
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v2
+        with:
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: http://100.68.137.50:9000
+
+
+      - name: Run Trivy Scan on file system
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          ignore-unfixed: true
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
+          vuln-type: os,library
+          scanners: vuln,secret,config
+
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'Next.js App'
+          path: '.'
+          format: 'ALL'
+
+      - name: Run Gitleaks for secrets detection
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
