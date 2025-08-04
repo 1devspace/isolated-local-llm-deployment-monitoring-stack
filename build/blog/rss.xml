@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>🧠 Isolated Local LLM Stack Blog</title>
+        <link>https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog</link>
+        <description>🧠 Isolated Local LLM Stack Blog</description>
+        <lastBuildDate>Mon, 01 Jan 2024 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Welcome to the LLM Stack Documentation 🎉]]></title>
+            <link>https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs</link>
+            <guid>https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs</guid>
+            <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We're excited to launch the official documentation site for the Isolated Local LLM Deployment & Monitoring Stack!]]></description>
+            <content:encoded><![CDATA[<p>We're excited to launch the official documentation site for the <strong>Isolated Local LLM Deployment &amp; Monitoring Stack</strong>!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-whats-new">🚀 What's New<a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-whats-new" class="hash-link" aria-label="Direct link to 🚀 What's New" title="Direct link to 🚀 What's New">​</a></h2>
+<p>This comprehensive documentation site provides:</p>
+<ul>
+<li><strong>Step-by-step guides</strong> for deploying your local LLM environment</li>
+<li><strong>Detailed monitoring setup</strong> with Prometheus and Grafana</li>
+<li><strong>Security best practices</strong> for air-gapped deployments</li>
+<li><strong>Troubleshooting guides</strong> for common issues</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-documentation-structure">📚 Documentation Structure<a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-documentation-structure" class="hash-link" aria-label="Direct link to 📚 Documentation Structure" title="Direct link to 📚 Documentation Structure">​</a></h2>
+<p>Our documentation is organized into clear sections:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-getting-started">🎯 <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/intro">Getting Started</a><a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-getting-started" class="hash-link" aria-label="Direct link to -getting-started" title="Direct link to -getting-started">​</a></h3>
+<p>Jump right in with our quick start guide. Get your LLM environment running in under 5 minutes!</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-llm-deployment">🔧 <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/llm-deployment">LLM Deployment</a><a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-llm-deployment" class="hash-link" aria-label="Direct link to -llm-deployment" title="Direct link to -llm-deployment">​</a></h3>
+<p>Deep dive into Ollama configuration, model management, and Open WebUI setup.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-monitoring-stack">📊 <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/monitoring">Monitoring Stack</a><a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-monitoring-stack" class="hash-link" aria-label="Direct link to -monitoring-stack" title="Direct link to -monitoring-stack">​</a></h3>
+<p>Learn how to set up comprehensive monitoring with Prometheus, Grafana, cAdvisor, and Node Exporter.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-security--isolation">🔒 <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/security">Security &amp; Isolation</a><a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-security--isolation" class="hash-link" aria-label="Direct link to -security--isolation" title="Direct link to -security--isolation">​</a></h3>
+<p>Understand the security features and network isolation that make this stack enterprise-ready.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-troubleshooting">🛠️ <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/troubleshooting">Troubleshooting</a><a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#%EF%B8%8F-troubleshooting" class="hash-link" aria-label="Direct link to ️-troubleshooting" title="Direct link to ️-troubleshooting">​</a></h3>
+<p>Find solutions to common issues and learn debugging techniques.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-key-features-covered">🌟 Key Features Covered<a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-key-features-covered" class="hash-link" aria-label="Direct link to 🌟 Key Features Covered" title="Direct link to 🌟 Key Features Covered">​</a></h2>
+<ul>
+<li><strong>One-command deployment</strong> with Docker</li>
+<li><strong>Air-gapped compatibility</strong> for secure environments</li>
+<li><strong>Real-time monitoring</strong> and alerting</li>
+<li><strong>Model management</strong> and optimization</li>
+<li><strong>Performance tuning</strong> and resource management</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-contributing">🤝 Contributing<a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-contributing" class="hash-link" aria-label="Direct link to 🤝 Contributing" title="Direct link to 🤝 Contributing">​</a></h2>
+<p>Found an issue with the documentation? Have suggestions for improvement?</p>
+<ul>
+<li><a href="https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues" target="_blank" rel="noopener noreferrer">Report issues</a></li>
+<li><a href="https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/discussions" target="_blank" rel="noopener noreferrer">Join discussions</a></li>
+<li><a href="https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/tree/main/docs" target="_blank" rel="noopener noreferrer">Contribute to docs</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-whats-next">🎯 What's Next?<a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/blog/welcome-llm-docs#-whats-next" class="hash-link" aria-label="Direct link to 🎯 What's Next?" title="Direct link to 🎯 What's Next?">​</a></h2>
+<p>We're continuously improving the documentation based on community feedback. Upcoming additions include:</p>
+<ul>
+<li><strong>Advanced configuration guides</strong></li>
+<li><strong>Performance optimization tutorials</strong></li>
+<li><strong>Custom model integration</strong></li>
+<li><strong>Scaling strategies</strong></li>
+</ul>
+<p>Ready to get started? Head over to our <a href="https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/docs/intro">Getting Started Guide</a> and deploy your first LLM in minutes!</p>
+<hr>
+<p>Happy deploying! 🚀</p>]]></content:encoded>
+            <category>llm</category>
+            <category>docker</category>
+            <category>monitoring</category>
+            <category>documentation</category>
+        </item>
+    </channel>
+</rss>
