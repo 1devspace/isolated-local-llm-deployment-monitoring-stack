@@ -1,8 +1,8 @@
 <!-- Core Badges -->
-[![Build](https://img.shields.io/github/actions/workflow/status/<USERNAME>/<REPO>/build.yml?branch=main)](https://github.com/<USERNAME>/<REPO>/actions)
-[![Coverage](https://img.shields.io/codecov/c/github/<USERNAME>/<REPO>?logo=codecov)](https://app.codecov.io/gh/<USERNAME>/<REPO>)
-[![Version](https://img.shields.io/github/package-json/v/<USERNAME>/<REPO>?color=blue)](https://github.com/<USERNAME>/<REPO>/package.json)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Build](https://img.shields.io/github/actions/workflow/status/1devspace/isolated-local-llm-deployment-monitoring-stack/build.yml?branch=main)](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/1devspace/isolated-local-llm-deployment-monitoring-stack?logo=codecov)](https://app.codecov.io/gh/1devspace/isolated-local-llm-deployment-monitoring-stack)
+[![Version](https://img.shields.io/github/package-json/v/1devspace/isolated-local-llm-deployment-monitoring-stack?color=blue)](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/blob/main/package.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/blob/main/LICENSE)
 
 <!-- Tooling and Stack -->
 [![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-orange?logo=prometheus)](https://prometheus.io)
