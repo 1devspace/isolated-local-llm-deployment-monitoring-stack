@@ -1,0 +1,30 @@
+name: Teardown LLM Stack
+
+on:
+  workflow_dispatch:
+    inputs:
+      ollama_port:
+        description: 'Ollama host port'
+        required: false
+        default: '11434'
+      webui_port:
+        description: 'Open WebUI host port'
+        required: false
+        default: '3000'
+
+jobs:
+  cleanup:
+    runs-on: self-hosted
+
+    steps:
+      - name: Stop and remove LLM containers
+        run: |
+          docker stop ollama open-webui || true
+          docker rm ollama open-webui || true
+
+      - name: Remove LLM Docker network
+        run: docker network rm ollama-net || true
+
+      - name: Print freed ports
+        run: |
+          echo "Ollama port ${{ github.event.inputs.ollama_port }} and WebUI port ${{ github.event.inputs.webui_port }} are now free."

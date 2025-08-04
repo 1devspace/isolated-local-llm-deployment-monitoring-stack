@@ -1,0 +1,57 @@
+name: Deploy Isolated Ollama + Open WebUI
+
+on:
+  workflow_dispatch:
+    inputs:
+      ollama_port:
+        description: 'Ollama host port'
+        required: false
+        default: '11444'
+      webui_port:
+        description: 'Open WebUI host port'
+        required: false
+        default: '3010'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Docker network for LLM
+        run: |
+          docker network inspect ollama-net >/dev/null 2>&1 || \
+          docker network create ollama-net
+
+      - name: Run Ollama container
+        run: |
+          docker rm -f ollama || true
+          docker run -d \
+            --name ollama \
+            --network ollama-net \
+            -p 0.0.0.0:${{ github.event.inputs.ollama_port }}:11434 \
+            -v ollama-data:/root/.ollama \
+            ollama/ollama
+
+      - name: Pull LLM model (e.g., llama3)
+        run: |
+          docker exec ollama ollama pull llama3
+
+      - name: Run Open WebUI container
+        run: |
+          docker rm -f open-webui || true
+          docker run -d \
+            --name open-webui \
+            --network ollama-net \
+            -p 0.0.0.0:${{ github.event.inputs.webui_port }}:8080 \
+            -e OLLAMA_API_BASE_URL=http://ollama:11434 \
+            ghcr.io/open-webui/open-webui:main
+
+      - name: Print container status
+        run: docker ps --filter "name=ollama" --filter "name=open-webui"
+
+      - name: Test Ollama API
+        run: |
+          curl --fail http://localhost:${{ github.event.inputs.ollama_port }}/api/tags || echo "Ollama not responding"
