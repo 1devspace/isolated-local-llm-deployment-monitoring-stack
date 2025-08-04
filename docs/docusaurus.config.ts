@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://mohamedaminehamdi.github.io',
+  url: 'https://1devspace.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/Isolated-Local-LLM-Deployment-Monitoring-Stack/',
+  baseUrl: '/isolated-local-llm-deployment-monitoring-stack/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'mohamedaminehamdi', // Usually your GitHub org/user name.
-  projectName: 'Isolated-Local-LLM-Deployment-Monitoring-Stack', // Usually your repo name.
+  organizationName: '1devspace', // Usually your GitHub org/user name.
+  projectName: 'isolated-local-llm-deployment-monitoring-stack', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -45,7 +45,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/tree/main/docs/',
+            'https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/tree/main/docs/',
         },
         blog: {
           showReadingTime: true,
@@ -56,7 +56,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/tree/main/docs/',
+            'https://github.com/1de/isolated-local-llm-deployment-monitoring-stack/tree/main/docs/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -87,7 +87,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack',
+          href: 'https://github.com/1de/isolated-local-llm-deployment-monitoring-stack',
           label: 'GitHub',
           position: 'right',
         },
@@ -118,15 +118,15 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack',
+              href: 'https://github.com/1de/isolated-local-llm-deployment-monitoring-stack',
             },
             {
               label: 'Issues',
-              href: 'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues',
+              href: 'https://github.com/1de/isolated-local-llm-deployment-monitoring-stack/issues',
             },
             {
               label: 'Contributing',
-              href: 'https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/blob/main/CONTRIBUTING.md',
+              href: 'https://github.com/1de/isolated-local-llm-deployment-monitoring-stack/blob/main/CONTRIBUTING.md',
             },
           ],
         },

@@ -538,9 +538,9 @@ echo "✅ Logs collected in troubleshooting-$(date +%Y%m%d_%H%M%S)/"
 
 ### Community Support
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues)
-- **Discussions**: [Ask questions and share tips](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/discussions)
-- **Documentation**: [Check the latest docs](https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/issues)
+- **Discussions**: [Ask questions and share tips](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/discussions)
+- **Documentation**: [Check the latest docs](https://1devspace.github.io/isolated-local-llm-deployment-monitoring-stack/)
 
 When reporting issues, please include:
 - System information (OS, Docker version)
@@ -554,4 +554,4 @@ When reporting issues, please include:
 Start with the health check script at the top of this page. It catches 90% of common configuration issues and provides specific solutions for each problem found.
 :::
 
-Need more help? Check our [GitHub Issues](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues) or start a [Discussion](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/discussions).
+Need more help? Check our [GitHub Issues](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/issues) or start a [Discussion](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/discussions).
