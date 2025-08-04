@@ -1,4 +1,10 @@
+<!-- Core Badges -->
+[![Build](https://img.shields.io/github/actions/workflow/status/<USERNAME>/<REPO>/build.yml?branch=main)](https://github.com/<USERNAME>/<REPO>/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/<USERNAME>/<REPO>?logo=codecov)](https://app.codecov.io/gh/<USERNAME>/<REPO>)
+[![Version](https://img.shields.io/github/package-json/v/<USERNAME>/<REPO>?color=blue)](https://github.com/<USERNAME>/<REPO>/package.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+<!-- Tooling and Stack -->
 [![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-orange?logo=prometheus)](https://prometheus.io)
 [![Grafana](https://img.shields.io/badge/Dashboard-Grafana-F46800?logo=grafana&logoColor=white)](https://grafana.com)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-4B0082?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzRiMDA4MiIvPjwvc3ZnPg==)](https://ollama.com)
