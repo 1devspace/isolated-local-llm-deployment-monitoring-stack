@@ -109,7 +109,7 @@ Key configuration in `docusaurus.config.ts`:
 
 The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch, thanks to the GitHub Actions workflow in `.github/workflows/deploy-docs.yml`.
 
-**Deployment URL**: `https://mohamedaminehamdi.github.io/Isolated-Local-LLM-Deployment-Monitoring-Stack/`
+**Deployment URL**: `https://1devspace.github.io/isolated-local-llm-deployment-monitoring-stack/`
 
 ### Manual Deployment
 
@@ -188,7 +188,7 @@ npm start
 ### Getting Help
 
 - [Docusaurus Documentation](https://docusaurus.io/docs)
-- [GitHub Issues](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues)
+- [GitHub Issues](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/issues)
 - [Docusaurus Discord](https://discord.gg/docusaurus)
 
 ## 📊 Analytics and Monitoring

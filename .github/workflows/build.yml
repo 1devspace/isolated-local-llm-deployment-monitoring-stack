@@ -1,0 +1,112 @@
+name: Release and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.0.0)'
+        required: true
+        type: string
+      release_type:
+        description: 'Release type (patch/minor/major)'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release-and-deploy:
+    runs-on: self-hosted
+    permissions:
+      contents: write
+      packages: write
+      id-token: write # for AWS auth if using OIDC
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Validate version format
+        run: |
+          if [[ ! "${{ github.event.inputs.version }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "❌ Invalid version format. Use format: v0.1.0"
+            exit 1
+          fi
+
+      - name: Check if tag already exists
+        run: |
+          if git tag -l | grep -q "^${{ github.event.inputs.version }}$"; then
+            echo "❌ Tag ${{ github.event.inputs.version }} already exists"
+            exit 1
+          fi
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.ACCESS_GITHUB_TOKEN }}
+
+      - name: Build and Tag Docker Images
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+          GHCR_IMAGE: ghcr.io/1devspace/local-llm
+
+        run: |
+          docker build -t $GHCR_IMAGE:$VERSION -t $GHCR_IMAGE:latest .
+
+        
+      - name: Trivy Scan (GHCR image)
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+          GHCR_IMAGE: ghcr.io/1devspace/local-llm
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image $GHCR_IMAGE:$VERSION
+
+      - name: Push Docker Images to GHCR
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+          GHCR_IMAGE: ghcr.io/1devspace/local-llm
+        run: |
+          docker push $GHCR_IMAGE:$VERSION
+          docker push $GHCR_IMAGE:latest
+
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "${{ github.event.inputs.version }}" -m "Release ${{ github.event.inputs.version }}"
+          git push origin "${{ github.event.inputs.version }}"
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release ${{ github.event.inputs.version }}
+          body: |
+            ## Release ${{ github.event.inputs.version }}
+            ### 🚀 What's New
+            - Version ${{ github.event.inputs.version }}
+            - Docker images pushed to GHCR
+
+            ### 📦 Docker Usage (GHCR)
+            ```bash
+            docker pull ghcr.io/1devspace/local-llm:${{ github.event.inputs.version }}
+            ```
+
+
+      - name: Summary
+        run: |
+          echo "✅ **Release Complete!** 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**GHCR:** \`ghcr.io/1devspace/local-llm:${{ github.event.inputs.version }}\`" >> $GITHUB_STEP_SUMMARY

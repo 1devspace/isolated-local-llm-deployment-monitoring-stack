@@ -1,11 +1,11 @@
 llm_team:
   name: LLM Stack Team
   title: Maintainers of the Isolated Local LLM Stack
-  url: https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack
+  url: https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack
   image_url: https://github.com/ghost.png
 
 mohamed:
   name: Mohamed Amine Hamdi
   title: Project Creator & Maintainer
-  url: https://github.com/mohamedaminehamdi
-  image_url: https://github.com/mohamedaminehamdi.png
+  url: https://github.com/1devspace
+  image_url: https://github.com/1devspace.png

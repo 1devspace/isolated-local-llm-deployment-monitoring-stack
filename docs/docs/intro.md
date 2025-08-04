@@ -41,8 +41,8 @@ Get your LLM environment running in under 5 minutes:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack.git
-cd Isolated-Local-LLM-Deployment-Monitoring-Stack
+git clone https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack.git
+cd isolated-local-llm-deployment-monitoring-stack
 ```
 
 ### 2. Deploy the LLM Stack
@@ -92,8 +92,8 @@ Now that you have the basic LLM stack running, explore these advanced features:
 ## 🛟 Need Help?
 
 - 📖 Check our [Troubleshooting Guide](./troubleshooting)
-- 🐛 [Report Issues](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/issues)
-- 💬 [Discussions](https://github.com/mohamedaminehamdi/Isolated-Local-LLM-Deployment-Monitoring-Stack/discussions)
+- 🐛 [Report Issues](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/issues)
+- 💬 [Discussions](https://github.com/1devspace/isolated-local-llm-deployment-monitoring-stack/discussions)
 
 ---
 
