@@ -55,7 +55,7 @@ docker network create ollama-net
 docker run -d \
   --name ollama \
   --network ollama-net \
-  -p 127.0.0.1:11444:11434 \
+  -p 11444:11434 \
   -v ollama-data:/root/.ollama \
   ollama/ollama
 ```
@@ -63,7 +63,7 @@ docker run -d \
 **Details:**
 
 - `--network ollama-net`: Keeps the container isolated from unrelated containers by using a dedicated Docker network.
-- `-p 127.0.0.1:11444:11434`: Exposes the Ollama API **only to your local machine**, preventing external access.
+- `-p 11444:11434`: Exposes the Ollama API **only to your local machine**, preventing external access.
 - `-v ollama-data:/root/.ollama`: Mounts a persistent Docker volume to store downloaded model files between container restarts.
 
 ### 🔹 Load a Model (e.g., LLaMA 3)
